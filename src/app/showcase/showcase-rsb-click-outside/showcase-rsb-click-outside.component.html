@@ -1,0 +1,197 @@
+<base-showcase>
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Modo estandar
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openEstandar()">Activar</button>
+          </div>
+          <div class="col-12 title-showcase">
+            Modo aplazado
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openDelay()">Activar</button>    
+          </div>
+          <div class="col-12 title-showcase">
+            Desactivado
+          </div>
+          <div class="col-12">            
+            <button class="btn btn-primary" (click)="openDesactivado()">Desactivar</button>                      
+          </div>
+          <div class="col-12 title-showcase">
+            Evitar primera vez
+          </div>
+          <div class="col-12">            
+            <button class="btn btn-primary" (click)="openAvoidFirstTime()">Activar</button>                      
+          </div>
+          <div class="col-12">
+            Modo actual: {{mode}}
+          </div>
+          <div class="col-12">
+            <rsb-toast></rsb-toast>
+            <div *ngIf="mode === 'estandar'" class="block" rsbClickOutside (clickOutside)="clickOutside($event)">
+              Clica fuera de este bloque para ejecutar una acción.
+            </div>
+            <div *ngIf="mode === 'delay'" class="block" rsbClickOutside (clickOutside)="clickOutside($event)" [clickOutsideDelay]="5000">
+              Clica fuera de este bloque para ejecutar una acción después de un tiempo determinado.
+            </div>
+            <div *ngIf="mode === 'desactivado'" class="block" rsbClickOutside (clickOutside)="clickOutside($event)" [clickOutsideEnabled]="false">
+              Al estar desactivado el clic fuera no ejecuta ninguna acción. 
+            </div>
+            <div *ngIf="mode === 'avoid first time'" class="block" rsbClickOutside (clickOutside)="clickOutside($event)" [avoidFirstTime]="true">
+              Ejecutar el click outside evitando la primera vez.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Modo estandar
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openEstandar()&quot;&gt;Activar&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Modo aplazado
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openDelay()&quot;&gt;Activar&lt;/button&gt;    
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Desactivado
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;            
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openDesactivado()&quot;&gt;Desactivar&lt;/button&gt;                      
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Evitar primera vez
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;            
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openAvoidFirstTime()&quot;&gt;Activar&lt;/button&gt;                      
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  Modo actual: {{mode}}
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;rsb-toast&gt;&lt;/rsb-toast&gt;
+  &lt;div *ngIf=&quot;mode === 'estandar'&quot; class=&quot;block&quot; rsbClickOutside (clickOutside)=&quot;clickOutside($event)&quot;&gt;
+    Clica fuera de este bloque para ejecutar una acci&oacute;n.
+  &lt;/div&gt;
+  &lt;div *ngIf=&quot;mode === 'delay'&quot; class=&quot;block&quot; rsbClickOutside (clickOutside)=&quot;clickOutside($event)&quot; [clickOutsideDelay]=&quot;5000&quot;&gt;
+    Clica fuera de este bloque para ejecutar una acci&oacute;n despu&eacute;s de un tiempo determinado.
+  &lt;/div&gt;
+  &lt;div *ngIf=&quot;mode === 'desactivado'&quot; class=&quot;block&quot; rsbClickOutside (clickOutside)=&quot;clickOutside($event)&quot; [clickOutsideEnabled]=&quot;false&quot;&gt;
+    Al estar desactivado el clic fuera no ejecuta ninguna acci&oacute;n. 
+  &lt;/div&gt;
+  &lt;div *ngIf=&quot;mode === 'avoid first time'&quot; class=&quot;block&quot; rsbClickOutside (clickOutside)=&quot;clickOutside($event)&quot; [avoidFirstTime]=&quot;true&quot;&gt;
+    Ejecutar el click outside evitando la primera vez.
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="CSS">
+<pre><code class="language-css" pCode ngNonBindable>.block 
+&#123;
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  margin: 10px 0 0 0;
+  border: 2px solid;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+import &#123; RsbToastService &#125; from 'rsb-library';
+
+@Component(&#123;
+  selector: 'app-showcase-click-outside',
+  templateUrl: './showcase-rsb-click-outside.component.html',
+  styleUrls: ['./showcase-rsb-click-outside.component.scss']
+&#125;)
+
+export class ShowcaseClickOutsideComponent
+&#123;
+  public mode:string;
+  constructor(private rsbToast:RsbToastService, private RsbCache:RsbCacheService)
+  &#123;
+    this.RsbCache.setElement('title', 'Click outside');
+    this.mode = 'estandar';
+  &#125;
+  openEstandar() &#123; this.mode = 'estandar'; &#125;
+  openDelay() &#123; this.mode = 'delay'; &#125;
+  openDesactivado() &#123; this.mode = 'desactivado'; &#125;
+  openAvoidFirstTime() &#123; this.mode = 'avoid first time'; &#125;
+  clickOutside($event)
+  &#123;
+    console.log($event);
+    this.rsbToast.addSuccessMessage('Éxito', 'Click fuera del elemento');    
+  &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>clickOutsideEnabled</td>
+          <td>Indica si está activo el evento de clicar fuera.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>avoidFirstTime</td>
+          <td>Evita el primer intento de clicar fuera.</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>clickOutsideDelay</td>
+          <td>El número de milisegundos que tarda en ejecutarse el evento.</td>
+          <td>number</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>clickOutside</td>
+          <td>Evento al clicar fuera del elemento</td>
+          <td>MouseEvent</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

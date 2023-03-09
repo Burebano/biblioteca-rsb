@@ -1,0 +1,157 @@
+<base-showcase [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="showSpinnerEx1()">Activar spinner</button>
+            <rsb-spinner *ngIf="!embedded"></rsb-spinner>
+          </div>
+          <div class="col-12 title-showcase">
+            Embebido
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="showSpinnerEx2()">Activar spinner</button>
+            <div class="embedded">
+              <rsb-spinner *ngIf="embedded" [embedded]="true"></rsb-spinner>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel enim tempor, venenatis ligula ac, volutpat enim. Morbi commodo ullamcorper rutrum. Morbi id blandit sem, eu rhoncus dolor. Integer turpis dui, luctus non sem sed, laoreet auctor risus. Fusce lacinia turpis a leo rutrum imperdiet. Suspendisse ultricies sollicitudin finibus. Nullam porta sed ligula id rhoncus.
+              <br /><br />
+              Proin et orci at massa rhoncus posuere eget vel velit. Vivamus turpis nisi, egestas sit amet faucibus vitae, rhoncus mattis tellus. Quisque tempor quam et nisl pellentesque pretium. Pellentesque congue ligula nec lectus varius faucibus et vitae neque. Donec at placerat lorem. In vestibulum enim eget nisl lacinia, nec pretium magna facilisis. Mauris iaculis interdum orci nec luctus. Pellentesque in eleifend tellus. 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;showSpinnerEx1()&quot;&gt;Activar spinner&lt;/button&gt;
+&lt;rsb-spinner *ngIf=&quot;!embedded&quot;&gt;&lt;/rsb-spinner&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;showSpinnerEx2()&quot;&gt;Activar spinner&lt;/button&gt;
+&lt;div class=&quot;embedded&quot;&gt;
+  &lt;rsb-spinner *ngIf=&quot;embedded&quot; [embedded]=&quot;true&quot;&gt;&lt;/rsb-spinner&gt;
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="CSS">
+<pre><code class="language-css" pCode ngNonBindable>.rsb-spinner
+&#123;
+    &--overlay 
+    &#123;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        cursor: default;
+        position: fixed;
+        background-color: rgba(0,0,0,.5);
+        .rsb-spinner__spinner &#123; position: fixed; &#125;
+    &#125;
+    &--overlay-embedded
+    &#123;
+        
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        cursor: default;
+        position: absolute;
+        background-color: rgba(0,0,0,.5);
+        .rsb-spinner__spinner &#123; position: absolute; &#125;
+    &#125;
+    &__spinner
+    &#123;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    &#125;
+    img &#123; max-height: 60px; &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbSpinnerService &#125; from 'rsb-library';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-spinner',
+  templateUrl: './showcase-rsb-spinner.component.html',
+  styleUrls: ['./showcase-rsb-spinner.component.scss']
+&#125;)
+
+export class ShowcaseRsbSpinnerComponent
+&#123;
+  public embedded?:boolean;
+  constructor(public rsbSpinner:RsbSpinnerService, private RsbCache:RsbCacheService)
+  &#123;
+    this.RsbCache.setElement('title', 'Spinner');
+    this.embedded = false;
+  &#125;
+  showSpinnerEx1()
+  &#123;
+    this.embedded = false;
+    this.rsbSpinner.showSpinner();
+    setTimeout(() =&gt; &#123; this.rsbSpinner.hideSpinner(); &#125;, 2500);
+  &#125;
+  showSpinnerEx2()
+  &#123;
+    this.embedded = true;
+    this.rsbSpinner.showSpinner();
+    setTimeout(() =&gt; &#123; this.rsbSpinner.hideSpinner(); &#125;, 2500);
+  &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pathImg</td>
+          <td>Indica la ruta de la imagen.</td>
+          <td>string</td>
+          <td>'resources/img/spinner.gif'</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  -->
+</base-showcase>

@@ -1,0 +1,203 @@
+<rsb-detail [showOverlay]="showDetailOverlay" [showTitle]="showDetailTitle" *ngIf="showDetail" (close)="closeDetail()">
+  <h1 detail-title>Detalle ejemplo</h1>
+  <div class="row" detail-content>
+    <div class="col-12">
+      <form>
+        <div class="row form-group">
+          <div class="col-12">
+            <label style="width: 100%;">
+              Campo1
+              <input type="text" class="form-control" />
+            </label>
+          </div>
+          <div class="col-12">
+            <label style="width: 100%;">
+              Campo2
+              <input type="text" class="form-control" />
+            </label>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-block btn-primary">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</rsb-detail>
+<base-showcase>
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openDetailEx1()">Abrir detalle</button>
+          </div>
+          <div class="col-12 title-showcase">
+            Sin título
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openDetailEx2()">Abrir detalle</button>            
+          </div>
+          <div class="col-12 title-showcase">
+            Sin overlay
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openDetailEx3()">Abrir detalle</button>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Estandar
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openDetailEx1()&quot;&gt;Abrir detalle&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Sin t&iacute;tulo
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openDetailEx2()&quot;&gt;Abrir detalle&lt;/button&gt;            
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Sin overlay
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openDetailEx3()&quot;&gt;Abrir detalle&lt;/button&gt;            
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;rsb-detail [showOverlay]=&quot;showDetailOverlay&quot; [showTitle]=&quot;showDetailTitle&quot; *ngIf=&quot;showDetail&quot; (close)=&quot;closeDetail()&quot;&gt;
+  &lt;h1 detail-title&gt;Detalle ejemplo&lt;/h1&gt;
+  &lt;div class=&quot;row&quot; detail-content&gt;
+    &lt;div class=&quot;col-12&quot;&gt;
+      &lt;form&gt;
+        &lt;div class=&quot;row form-group&quot;&gt;
+          &lt;div class=&quot;col-12&quot;&gt;
+            &lt;label style=&quot;width: 100%;&quot;&gt;
+              Campo1
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; /&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-12&quot;&gt;
+            &lt;label style=&quot;width: 100%;&quot;&gt;
+              Campo2
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; /&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-12&quot;&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn btn-block btn-primary&quot;&gt;Guardar&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/rsb-detail&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-detail',
+  templateUrl: './showcase-rsb-detail.component.html'
+&#125;)
+
+export class ShowcaseRsbDetailComponent
+&#123;
+  public showDetail:boolean;
+  public showDetailTitle:boolean;
+  public showDetailOverlay:boolean;
+  constructor(private RsbCache:RsbCacheService)
+  &#123;
+    this.RsbCache.setElement('title', 'Detail');
+    this.showDetailTitle = true;
+    this.showDetailOverlay = true;
+  &#125;
+  openDetailEx1()
+  &#123;
+    this.showDetailTitle = true;
+    this.showDetailOverlay = true;
+    this.showDetail = true;
+  &#125;
+  openDetailEx2()
+  &#123;
+    this.showDetailTitle = false;
+    this.showDetailOverlay = true;
+    this.showDetail = true;
+  &#125;
+  openDetailEx3()
+  &#123;
+    this.showDetailTitle = true;
+    this.showDetailOverlay = false;
+    this.showDetail = true;
+  &#125;
+  closeDetail() &#123; this.showDetail = false; &#125;
+&#125;  
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>showOverlay</td>
+          <td>Indica si queremos mostrar el overlay del detalle.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>showTitle</td>
+          <td>Indica si queremos mostrar el bloque del título del detalle.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>clickOutsideEnabled</td>
+          <td>Indica si queremos activar la directiva click outside del detalle.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>close</td>
+          <td>Evento al cerrar el detalle</td>
+          <td>boolean</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

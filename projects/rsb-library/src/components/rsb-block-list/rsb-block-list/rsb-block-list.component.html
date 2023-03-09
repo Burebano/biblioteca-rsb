@@ -1,0 +1,36 @@
+<div class="rsb-block-list row">
+  <div class="col-12">
+    <div class="row" *ngIf="blockItems?.length == 0">
+      <div class="col-12 tex-center">
+        <span>
+          {{labelNoResults}}
+        </span>
+      </div>
+    </div>
+    <div class="row" *ngIf="blockItems?.length > 0">
+      <div class="col-12">
+        <rsb-block-list-item *ngFor="let blockItem of blockItems | paginate: { itemsPerPage: pagination, currentPage: page }; let index = index"
+        [blockItem]="blockItem" 
+        [id]="'block-item-' + index" 
+        [showHeader]="showHeader" 
+        [showInfoAdditional]="showInfoAdditional" 
+        [showActions]="showActions" 
+        [showBorder]="showBorder"
+        (actionSelected)="sendAction($event)"
+        (closeOptions)="closeAllOptionsExcept($event)"
+        [templateHeader]="templateHeader"
+        [templateInfoAdditional]="templateInfoAdditional"
+        [templateData]="templateData"
+        (click)="selectItem(blockItem, index)">
+
+        </rsb-block-list-item>
+      </div>
+    </div>
+    <!-- Paginación -->
+    <div class="row">
+      <div class="col-12 p-4 text-center">
+        <pagination-controls [autoHide]="true" [previousLabel]="previousLabel" [nextLabel]="nextLabel" (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="rsb-detail" *ngIf="showDetail" [@slide] rsbClickOutside (clickOutside)="closeDetail()" [clickOutsideEnabled]="clickOutsideEnabled" [avoidFirstTime]="true">
+  <div class="row rsb-detail__title" *ngIf="showTitle">
+    <div class="col-12 cnt-title">
+      <ng-content select="[detail-title]">
+
+      </ng-content>
+      <i class="fa fa-times rsb-detail__close" (click)="closeDetail()"></i>
+    </div>
+  </div>
+  <div class="row rsb-detail__content">
+    <div class="col-12">
+      <ng-content select="[detail-content]">
+
+      </ng-content>
+    </div> 
+  </div>
+</div>
+<div class="rsb-overlay" *ngIf="showDetail && showOverlay"></div>

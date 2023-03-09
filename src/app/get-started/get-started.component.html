@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12 title-rsb">
+        <span>¿Qué es la biblioteca de componentes RSB Library?</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>Es un conjunto de componentes, servicios, pipes y directivas reutilizables para tus proyectos.</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 title-rsb mt-3">
+        <span>¿Cómo puedo instalar esta maravillosa biblioteca?</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>Ejecutando el siguiente comando:</span>
+        <pre><code class="language-markup" pCode ngNonBindable>npm install rsb-library</code></pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 title-rsb mt-3">
+        <span>¿Qué debo añadir en mi angular.json?</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>Añadiremos lo siguiente en assets:</span>
+        <pre><code class="language-markup" pCode ngNonBindable>&#123; &quot;glob&quot;: &quot;**/*&quot;, &quot;input&quot;: &quot;dist/rsb-library/resources/img&quot;, &quot;output&quot;: &quot;resources/img/&quot;&#125;</code></pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>Añadiremos lo siguiente en styles:</span>
+<pre><code class="language-markup" pCode ngNonBindable>&quot;node_modules/bootstrap/dist/css/bootstrap.min.css&quot;,
+&quot;node_modules/font-awesome/css/font-awesome.min.css&quot;,
+&quot;node_modules/rsb-library/resources/scss/rsb-styles.scss&quot;,
+&quot;node_modules/rsb-library/resources/themes/theme-default.scss&quot;,
+&quot;node_modules/rsb-library/resources/themes/theme-dark.scss&quot;,
+&quot;node_modules/rsb-library/resources/scss/font.scss&quot;
+</code></pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 title-rsb mt-3">
+        <span>¿Qué debo añadir en mi app.module?</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; BrowserAnimationsModule &#125; from '@angular/platform-browser/animations';
+import &#123; RsbLibraryModule &#125; from 'rsb-library';
+@NgModule(&#123;
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RsbLibraryModule
+  ],
+  bootstrap: [AppComponent]
+&#125;)
+</code></pre>
+      </div>
+    </div>
+  </div>
+</div>

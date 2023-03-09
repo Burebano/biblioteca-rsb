@@ -1,0 +1,12 @@
+<!--
+embedded: {{embedded}}
+<br />
+- rsbSpinner.show: {{rsbSpinner.show}} -
+<br />
+pathImg: {{pathImg}}
+-->
+<div class="rsb-spinner" *ngIf="rsbSpinner.show" [ngClass]="{'rsb-spinner--overlay': !embedded, 'rsb-spinner--overlay-embedded': embedded}">
+    <div class="rsb-spinner__spinner">
+      <img [src]="pathImg" />
+    </div>
+</div>

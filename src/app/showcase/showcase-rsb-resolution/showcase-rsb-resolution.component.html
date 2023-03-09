@@ -1,0 +1,62 @@
+<base-showcase [showInputs]="false" [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            Redimensiona la pantalla para cambiar el modo.
+            <div *ngIf="rsbResolution.size == rsbConstants.RsbResolutionConstants.MOBILE">
+              Modo móvil.
+            </div>
+            <div *ngIf="rsbResolution.size == rsbConstants.RsbResolutionConstants.TABLET">
+              Modo tablet.
+            </div>
+            <div *ngIf="rsbResolution.size == rsbConstants.RsbResolutionConstants.WEB">
+              Modo escritorio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>Redimensiona la pantalla para cambiar el modo.
+&lt;div *ngIf=&quot;rsbResolution.size == rsbConstants.RsbResolutionConstants.MOBILE&quot;&gt;
+  Modo m&oacute;vil.
+&lt;/div&gt;
+&lt;div *ngIf=&quot;rsbResolution.size == rsbConstants.RsbResolutionConstants.TABLET&quot;&gt;
+  Modo tablet.
+&lt;/div&gt;
+&lt;div *ngIf=&quot;rsbResolution.size == rsbConstants.RsbResolutionConstants.WEB&quot;&gt;
+  Modo escritorio.
+&lt;/div&gt;
+</code></pre>
+        <div>
+          Debes añadir la directiva rsbResolution a un contenedor padre, por ejemplo: 
+          <pre><code class="language-markup" pCode ngNonBindable>&lt;body rsbResolution&gt;</code></pre>
+        </div>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbResolutionService, RsbConstantsService &#125; from 'rsb-library';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-resolution',
+  templateUrl: './showcase-rsb-resolution.component.html'
+&#125;)
+
+export class ShowcaseRsbResolutionComponent
+&#123;
+  constructor(public rsbResolution:RsbResolutionService, public rsbConstants:RsbConstantsService, private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Resolutions'); &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+</base-showcase>

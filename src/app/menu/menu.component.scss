@@ -1,0 +1,155 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.rsb-menu
+{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: minmax(71px, max-content) 1fr;
+    gap: 0;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar content";
+    > div 
+    {
+        &.main-content
+        {
+            grid-area: content;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 25px 15px;
+            position: relative;
+        }    
+        &.sidebar
+        {
+            grid-area: sidebar;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: #555;
+            height: 100vh;
+            width: 80px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            border-right: 1px solid #999;
+            img 
+            {
+                max-width: 50px;
+            }
+            > div 
+            {
+                cursor: pointer;
+                padding: 10px;
+                &.logo 
+                {
+                    border-bottom: 1px solid #999;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            span.cnt-logos
+            {
+                margin: auto 0 0 0;
+                display: flex;
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+        }    
+        &.main-bar
+        {
+            grid-area: header;
+            background-color: #555555;
+            color: #fff;
+            border-bottom: 1px solid #999;
+            color: #fff;
+            padding: 15px;
+            font-family: rsb;
+            flex-grow: 0;
+            font-size: 32px;
+            line-height: 1.15;
+        }
+    }
+    .rsb-detail
+    {
+        position: absolute;
+        width: 100%;
+        overflow: auto;
+        .input-group input.form-control[type="text"]
+        {
+            border-radius: 0;
+            border: 2px solid #555;
+        }
+        .input-group-append
+        {
+            button 
+            {
+                background: none;
+                border: 2px solid #555;
+                border-left: none;
+                padding: 0 15px;
+            }
+        }
+        .cnt-sections
+        {
+            padding-top: 30px;
+            .section-text
+            {
+                font-size: 40px;
+                font-weight: 100;
+            }
+            .cnt-items
+            {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+                gap: 10px;
+                > div 
+                {
+                    font-family: rsb;
+                    font-weight: 900;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 2px solid #555;
+                    padding: 15px;
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                    span 
+                    {
+                        color: #555;
+                        position: relative;
+                        transition: color .57s ease-in-out;
+                    }
+                    &::before 
+                    {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        right: 100%;
+                        position: absolute;
+                        background-color: #555;
+                        transition: right .75s ease-in-out;
+                    }
+                    &:hover 
+                    {
+                        span { color: #fff; }
+                        &::before 
+                        {
+                            right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

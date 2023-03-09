@@ -1,0 +1,163 @@
+<base-showcase>
+  <div examples>
+    <rsb-toast></rsb-toast>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <rsb-dropdown [options]="options" (selectItem)="select($event)"></rsb-dropdown>
+          </div>
+          <div class="col-12 title-showcase">
+            NgModel
+          </div>
+          <div class="col-12">
+            <rsb-dropdown [options]="options" (selectItem)="select($event)" [(ngModel)]="valueEx2"></rsb-dropdown>
+            <span> Valor: {{valueEx2}} </span>
+          </div>
+          <div class="col-12 title-showcase">
+            Template
+          </div>
+          <div class="col-12">            
+            <rsb-dropdown [options]="options" (selectItem)="select($event)" [(ngModel)]="valueEx3">
+            <ng-template itemTemplate let-item="item">
+              {{item.label}} - {{item.value}}
+            </ng-template>
+            </rsb-dropdown>
+            <span>Valor: {{ valueEx2 }}</span>
+          </div>
+          <div class="col-12 title-showcase">
+            Sin resultados
+          </div>
+          <div class="col-12">
+            <rsb-dropdown [options]="[]" [labelNoResults]="'Vacío'"></rsb-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Estandar
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;rsb-dropdown [options]=&quot;options&quot; (selectItem)=&quot;select($event)&quot;&gt;&lt;/rsb-dropdown&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    NgModel
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;rsb-dropdown [options]=&quot;options&quot; (selectItem)=&quot;select($event)&quot; [(ngModel)]=&quot;valueEx2&quot;&gt;&lt;/rsb-dropdown&gt;
+    &lt;span&gt; Valor: {{valueEx2}} &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Template
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;            
+    &lt;rsb-dropdown [options]=&quot;options&quot; (selectItem)=&quot;select($event)&quot; [(ngModel)]=&quot;valueEx3&quot;&gt;
+      &lt;ng-template itemTemplate let-item=&quot;item&quot;&gt;
+        {{item.label}} - {{item.value}}
+      &lt;/ng-template&gt;
+    &lt;/rsb-dropdown&gt;
+    &lt;span&gt;Valor: {{ valueEx2 }}&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Sin resultados
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;rsb-dropdown [options]=&quot;[]&quot; [labelNoResults]=&quot;'Vac&iacute;o'&quot;&gt;&lt;/rsb-dropdown&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component, OnInit &#125; from '@angular/core';
+import &#123; RsbSelectItem &#125; from 'rsb-library';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+import &#123; RsbToastService &#125; from 'rsb-library';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-dropdown',
+  templateUrl: './showcase-rsb-dropdown.component.html'
+&#125;)
+
+export class ShowcaseRsbDropdownComponent implements OnInit
+&#123;
+  public options:RsbSelectItem[];
+  public valueEx2:any;
+  public valueEx3:any;
+  constructor(private rsbToast:RsbToastService, private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Dropdown'); &#125;
+  ngOnInit()
+  &#123;
+    this.options = [
+      new RsbSelectItem('Label 1', 'Value1'),
+      new RsbSelectItem('Label 2', 'Value2'),
+      new RsbSelectItem('Label 3', 'Value3'),
+      new RsbSelectItem('Label 4', 'Value4'),
+    ];    
+    this.valueEx2 = 'Value2';
+    this.valueEx3 = 'Value3';
+  &#125;
+  select($event)
+  &#123;
+    console.log($event);
+    this.rsbToast.addSuccessMessage('Exito', 'Has elegido: ' + JSON.stringify($event));
+  &#125;
+&#125;  
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>options</td>
+          <td>Opciones a mostrar.</td>
+          <td>RsbSelectItem[]</td>
+          <td>[]</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>labelNoResults</td>
+          <td>Cadena de texto que se muestra cuando no hay elementos.</td>
+          <td>string</td>
+          <td>No results</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>selectItem</td>
+          <td>Evento al seleccionar un item.</td>
+          <td>EventEmitter&lt;RsbSelectItem&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

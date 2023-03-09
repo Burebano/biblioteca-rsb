@@ -1,0 +1,8 @@
+<div class="rsb-tabs">
+  <div class="rsb-tabs__title" *ngFor="let tab of tabsItems" (click)="open(tab)" [ngClass]="{'rsb-tabs__title--selected': tab.selected}">
+    <span>{{tab.title}}</span>
+  </div>
+  <div class="rsb-tabs__content" *ngIf="contentTemplate">
+    <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>    
+  </div>
+</div>

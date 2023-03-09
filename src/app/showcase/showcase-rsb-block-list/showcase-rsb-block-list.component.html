@@ -1,0 +1,371 @@
+<base-showcase>
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <rsb-toast></rsb-toast>
+            <button class="btn btn-primary" (click)="addBlock()">Agregar bloque</button>&nbsp; 
+            <button class="btn btn-primary" (click)="removeFirstBlock()">Eliminar primero</button>&nbsp; 
+            <button class="btn btn-primary" (click)="removeLastBlock()">Eliminar último</button>&nbsp; 
+            <button class="btn btn-primary" (click)="showHideHeader()">&#123;&#123; showHeader ? 'Ocultar cabecera' : 'Mostrar cabecera' &#125;&#125;</button>&nbsp; 
+            <button class="btn btn-primary" (click)="showHideInfoAdditional()">&#123;&#123; showInfoAdditional ? 'Ocultar información adicional' : 'Mostrar información adicional' &#125;&#125;</button>&nbsp; 
+            <button class="btn btn-primary" (click)="showHideActions()">&#123;&#123; showActions ? 'Ocultar acciones' : 'Mostrar acciones' &#125;&#125;</button>&nbsp; 
+            <button class="btn btn-primary" (click)="showHideBorder()">&#123;&#123; showBorder ? 'Ocultar borde' : 'Mostrar borde' &#125;&#125;</button>&nbsp; 
+            <rsb-block-list [blockItems]="blockItems"
+              [showHeader]="showHeader"
+              [showInfoAdditional]="showInfoAdditional"
+              [showActions]="showActions"
+              [showBorder]="showBorder"
+              labelNoResults="No hay nada que mostrar"
+              previousLabel="Previo"
+              nextLabel="Siguiente"
+              [pagination]="pagination"
+              (actionSelected)="getAction($event)"
+              (itemSelected)="selectItem($event)">
+              <ng-template #templateInfoAdditional let-item="item">
+                <span>
+                  &#123;&#123;item.date | date: 'dd/MMMyyyy'&#125;&#125;
+                </span>
+              </ng-template>
+              <ng-template #templateHeader let-item="item">
+                <span>
+                  &#123;&#123;item.client&#125;&#125;
+                </span>
+              </ng-template>
+              <ng-template #templateData let-item="item">
+                <rsb-block-list-data-item label="Estado" [value]="item.status"></rsb-block-list-data-item>
+                <rsb-block-list-data-item label="Edad" [value]="item.age"></rsb-block-list-data-item>
+              </ng-template>
+            </rsb-block-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;rsb-toast&gt;&lt;/rsb-toast&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;addBlock()&quot;&gt;Agregar bloque&lt;/button&gt;&nbsp; 
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;removeFirstBlock()&quot;&gt;Eliminar primero&lt;/button&gt;&nbsp; 
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;removeLastBlock()&quot;&gt;Eliminar &uacute;ltimo&lt;/button&gt;&nbsp; 
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;showHideHeader()&quot;&gt;&#123;&#123; showHeader ? 'Ocultar cabecera' : 'Mostrar cabecera' &#125;&#125;&lt;/button&gt;&nbsp; 
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;showHideInfoAdditional()&quot;&gt;&#123;&#123; showInfoAdditional ? 'Ocultar informaci&oacute;n adicional' : 'Mostrar informaci&oacute;n adicional' &#125;&#125;&lt;/button&gt;&nbsp; 
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;showHideActions()&quot;&gt;&#123;&#123; showActions ? 'Ocultar acciones' : 'Mostrar acciones' &#125;&#125;&lt;/button&gt;&nbsp; 
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;showHideBorder()&quot;&gt;&#123;&#123; showBorder ? 'Ocultar borde' : 'Mostrar borde' &#125;&#125;&lt;/button&gt;&nbsp; 
+&lt;rsb-block-list [blockItems]=&quot;blockItems&quot;
+  [showHeader]=&quot;showHeader&quot;
+  [showInfoAdditional]=&quot;showInfoAdditional&quot;
+  [showActions]=&quot;showActions&quot;
+  [showBorder]=&quot;showBorder&quot;
+  labelNoResults=&quot;No hay nada que mostrar&quot;
+  previousLabel=&quot;Previo&quot;
+  nextLabel=&quot;Siguiente&quot;
+  [pagination]=&quot;pagination&quot;
+  (actionSelected)=&quot;getAction($event)&quot;
+  (itemSelected)=&quot;selectItem($event)&quot;&gt;
+  &lt;ng-template #templateInfoAdditional let-item=&quot;item&quot;&gt;
+    &lt;span&gt;
+      &#123;&#123;item.date | date: 'dd/MMMyyyy'&#125;&#125;
+    &lt;/span&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template #templateHeader let-item=&quot;item&quot;&gt;
+    &lt;span&gt;
+      &#123;&#123;item.client&#125;&#125;
+    &lt;/span&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template #templateData let-item=&quot;item&quot;&gt;
+    &lt;rsb-block-list-data-item label=&quot;Estado&quot; [value]=&quot;item.status&quot;&gt;&lt;/rsb-block-list-data-item&gt;
+    &lt;rsb-block-list-data-item label=&quot;Edad&quot; [value]=&quot;item.age&quot;&gt;&lt;/rsb-block-list-data-item&gt;
+  &lt;/ng-template&gt;
+&lt;/rsb-block-list&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component, OnInit &#125; from '@angular/core';
+import &#123; Appointment &#125; from './Appointment';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+import &#123; RsbBlockItem, RsbSelectedItem, RsbAction, RsbToastService &#125; from 'rsb-library';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-block-list',
+  templateUrl: './showcase-rsb-block-list.component.html'
+&#125;)
+
+export class ShowcaseRsbBlockListComponent implements OnInit
+&#123;
+
+  public blockItems:RsbBlockItem&lt;Appointment&gt;[];
+  public CANCEL_APPOINTMENT:string = 'CANCEL_APPOINTMENT';
+  public BEFORE_APPOINTMENT:string = 'BEFORE_APPOINTMENT';
+  public pagination:number; 
+  public showHeader:boolean;
+  public showInfoAdditional:boolean;
+  public showActions:boolean;
+  public showBorder:boolean;
+
+  constructor(public rsbCache:RsbCacheService, private rsbToast:RsbToastService)
+  &#123;
+    this.rsbCache.setElement('title', 'Block list');
+    this.blockItems = [];    
+    this.pagination = 5; 
+    this.showHeader = true;
+    this.showInfoAdditional = true;
+    this.showActions = true;
+    this.showBorder = true;
+  &#125;
+
+  ngOnInit()
+  &#123;
+    let appointments:Appointment[] = [
+      &#123;
+        date: "2021-08-10",
+        status: "complete", 
+        client: "Fernanco",
+        age: 27
+      &#125;,
+      &#123;
+        date: "2022-08-10",
+        status: "canceled", 
+        client: "Ramón",
+        age: 28
+      &#125;,
+      &#123;
+        date: "2010-08-10",
+        status: "unknown", 
+        client: "Jose",
+        age: 28
+      &#125;,
+      &#123;
+        date: "2023-08-10",
+        status: "in course", 
+        client: "Francisco",
+        age: 30
+      &#125;,
+      &#123;
+        date: "2023-08-10",
+        status: "in course", 
+        client: "Francisco",
+        age: 31
+      &#125;,
+      &#123;
+        date: "2023-08-10",
+        status: "in course", 
+        client: "Francisco",
+        age: 32
+      &#125;
+    ];
+    let actions:RsbAction&lt;Appointment&gt;[] = [
+      &#123;
+        label: 'Cancelar cita',
+        value: this.CANCEL_APPOINTMENT
+      &#125;,
+      &#123;
+        label: 'Ver citas anteriores',
+        value: this.BEFORE_APPOINTMENT,
+        icon: 'fa fa-file'        
+      &#125;
+    ];
+    appointments.forEach(ap =&gt;
+    &#123;
+      let blockItem = new RsbBlockItem&lt;Appointment&gt;();
+      blockItem.item = ap;
+      switch(ap.status)
+      &#123;
+        case 'complete':
+          blockItem.borderColor = 'green'
+          break;
+        case 'canceled':
+          blockItem.borderColor = 'red'
+          break;
+        case 'in course':
+          blockItem.borderColor = 'blue'
+          break;
+        case 'unknown':
+          blockItem.borderColor = 'grey'
+          break;
+      &#125;
+      if(blockItem.item.status !== 'in course')
+      &#123;
+        blockItem.actions = actions.slice(1);
+      &#125;
+      else 
+      &#123;
+        blockItem.actions = actions;
+      &#125;
+      this.blockItems.push(blockItem);
+    &#125;);
+  &#125;
+  getAction($event)
+  &#123;
+    console.log($event);
+    this.rsbToast.addInfoMessage('Acción seleccionada', JSON.stringify($event));
+  &#125;
+  selectItem($event:RsbSelectedItem&lt;Appointment&gt;)
+  &#123;
+    console.log($event);
+    this.rsbToast.addInfoMessage('Item seleccionado', JSON.stringify($event));
+  &#125;
+  addBlock()
+  &#123;
+    let ap:Appointment = 
+    &#123;
+      date: "2023-08-10",
+      status: "in course", 
+      client: "Francisco",
+      age: 30
+    &#125;;
+    let actions:RsbAction&lt;Appointment&gt;[] = [
+      &#123;
+        label: 'Cancelar cita',
+        value: this.CANCEL_APPOINTMENT
+      &#125;,
+      &#123;
+        label: 'Ver citas anteriores',
+        value: this.BEFORE_APPOINTMENT,
+        icon: 'fa fa-file'        
+      &#125;
+    ];
+    let blockItem = new RsbBlockItem&lt;Appointment&gt;();
+      blockItem.item = ap;
+      switch(ap.status) &#123;
+        case 'complete':
+          blockItem.borderColor = 'green'
+          break;
+        case 'canceled':
+          blockItem.borderColor = 'red'
+          break;
+        case 'in course':
+          blockItem.borderColor = 'blue'
+          break;
+        case 'unknown':
+          blockItem.borderColor = 'grey'
+          break;
+      &#125;
+      if(blockItem.item.status !== 'in course')
+      &#123;
+        blockItem.actions = actions.slice(1);
+      &#125;
+      else 
+      &#123;
+        blockItem.actions = actions;
+      &#125;
+      this.blockItems.push(blockItem);
+  &#125;
+  removeFirstBlock() &#123; this.blockItems = this.blockItems.slice(1); &#125;
+  removeLastBlock() &#123; this.blockItems = this.blockItems.slice(0, this.blockItems.length - 1); &#125;
+  showHideHeader() &#123; this.showHeader = !this.showHeader; &#125;
+  showHideInfoAdditional() &#123; this.showInfoAdditional = !this.showInfoAdditional; &#125;
+  showHideActions() &#123; this.showActions = !this.showActions; &#125;
+  showHideBorder() &#123; this.showBorder = !this.showBorder; &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>blockItems</td>
+          <td>Elementos a mostrar.</td>
+          <td>RsbBlockItem&lt;T&gt;[]</td>
+          <td>[]</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>labelNoResults</td>
+          <td>Texto cuando no hay elementos.</td>
+          <td>string</td>
+          <td>No results.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>showHeader</td>
+          <td>Muestra la cabecera del bloque.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>showInfoAdditional</td>
+          <td>Muestra la información adicional.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>showActions</td>
+          <td>Mostrar las acciones.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>showBorder</td>
+          <td>Mostrar el borde.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true | false</td>
+        </tr>
+        <tr>
+          <td>pagination</td>
+          <td>Indica el número de elementos por página</td>
+          <td>number</td>
+          <td>10</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>previousLabel</td>
+          <td>Texto del botón para ir a la página anterior.</td>
+          <td>string</td>
+          <td>Previa</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>nextLabel</td>
+          <td>Texto del botón para ir a la página siguiente.</td>
+          <td>string</td>
+          <td>Siguiente</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>itemSelected</td>
+          <td>Evento al seleccionar un bloque.</td>
+          <td>EventEmitter&lt;RsbSelectedItem&lt;T&gt;&gt;</td>
+        </tr>
+        <tr>
+          <td>actionSelected</td>
+          <td>Evento al seleccionar una acción.</td>
+          <td>EventEmitter&lt;RsbSelectedItem&lt;T&gt;&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

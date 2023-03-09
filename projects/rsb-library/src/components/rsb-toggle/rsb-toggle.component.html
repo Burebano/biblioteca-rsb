@@ -1,0 +1,10 @@
+<div class="rsb-toggle">
+  <div class="rsb-toggle__label" *ngIf="label">
+    <label>
+      {{label}}
+    </label>
+  </div>
+  <button class="rsb-toggle__button" [ngClass]="{'rsb-toggle__button--on': value, 'rsb-toggle__button--off': !value}" (click)="onClick()">
+
+  </button>
+</div>

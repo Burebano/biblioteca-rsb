@@ -1,0 +1,84 @@
+<base-showcase [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <rsb-tabs>
+              <rsb-tab-item title="Tab1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel enim tempor, venenatis ligula ac, volutpat enim. Morbi commodo ullamcorper rutrum. Morbi id blandit sem, eu rhoncus dolor. Integer turpis dui, luctus non sem sed, laoreet auctor risus. Fusce lacinia turpis a leo rutrum imperdiet. Suspendisse ultricies sollicitudin finibus. Nullam porta sed ligula id rhoncus.
+                <br /><br />
+                Proin et orci at massa rhoncus posuere eget vel velit. Vivamus turpis nisi, egestas sit amet faucibus vitae, rhoncus mattis tellus. Quisque tempor quam et nisl pellentesque pretium. Pellentesque congue ligula nec lectus varius faucibus et vitae neque. Donec at placerat lorem. In vestibulum enim eget nisl lacinia, nec pretium magna facilisis. Mauris iaculis interdum orci nec luctus. Pellentesque in eleifend tellus. 
+              </rsb-tab-item>
+              <rsb-tab-item title="Tab2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel enim tempor, venenatis ligula ac, volutpat enim. Morbi commodo ullamcorper rutrum. Morbi id blandit sem, eu rhoncus dolor. Integer turpis dui, luctus non sem sed, laoreet auctor risus. Fusce lacinia turpis a leo rutrum imperdiet. Suspendisse ultricies sollicitudin finibus. Nullam porta sed ligula id rhoncus.
+                <br /><br />
+                Proin et orci at massa rhoncus posuere eget vel velit. Vivamus turpis nisi, egestas sit amet faucibus vitae, rhoncus mattis tellus. Quisque tempor quam et nisl pellentesque pretium. Pellentesque congue ligula nec lectus varius faucibus et vitae neque. Donec at placerat lorem. In vestibulum enim eget nisl lacinia, nec pretium magna facilisis. Mauris iaculis interdum orci nec luctus. Pellentesque in eleifend tellus. 
+                <br /><br />                
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel enim tempor, venenatis ligula ac, volutpat enim. Morbi commodo ullamcorper rutrum. Morbi id blandit sem, eu rhoncus dolor. Integer turpis dui, luctus non sem sed, laoreet auctor risus. Fusce lacinia turpis a leo rutrum imperdiet. Suspendisse ultricies sollicitudin finibus. Nullam porta sed ligula id rhoncus.
+                <br /><br />
+                Proin et orci at massa rhoncus posuere eget vel velit. Vivamus turpis nisi, egestas sit amet faucibus vitae, rhoncus mattis tellus. Quisque tempor quam et nisl pellentesque pretium. Pellentesque congue ligula nec lectus varius faucibus et vitae neque. Donec at placerat lorem. In vestibulum enim eget nisl lacinia, nec pretium magna facilisis. Mauris iaculis interdum orci nec luctus. Pellentesque in eleifend tellus. 
+              </rsb-tab-item>
+            </rsb-tabs>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;rsb-tabs&gt;
+  &lt;rsb-tab-item title=&quot;Tab1&quot;&gt;
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+  &lt;/rsb-tab-item&gt;
+  &lt;rsb-tab-item title=&quot;Tab2&quot;&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+  &lt;/rsb-tab-item&gt;
+&lt;/rsb-tabs&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-tabs',
+  templateUrl: './showcase-rsb-tabs.component.html'
+&#125;)
+
+export class ShowcaseRsbTabsComponent
+&#123;
+  constructor(private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Pestañas'); &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    rsb-tab-item
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>title</td>
+          <td>Indica el nombre de la pestaña.</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

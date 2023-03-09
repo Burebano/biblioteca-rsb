@@ -1,0 +1,13 @@
+{
+  "name": "rsb-example",
+  "version": "13.0.1",
+  "author": {"email": "basural@outlook.es"},
+  "description": "Ejemplo proyecto biblioteca.",
+  "peerDependencies": {
+    "@angular/common": "^13.2.0",
+    "@angular/core": "^13.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

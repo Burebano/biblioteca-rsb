@@ -1,0 +1,137 @@
+$primary: #000;
+$border-primary: 1px solid $primary;
+$color-text: #000;
+$background: #FFF;
+$selected: #aefff48c;
+$content: #FFF;
+.theme-default 
+{
+    .theme-content
+    {
+        background: $content;
+    }
+    rsb-tabs
+    {
+        .rsb-tabs 
+        {
+            &__title 
+            {
+                color: $color-text;
+            }
+            &--selected 
+            {
+                border-bottom-color: $primary;
+            }
+        }
+    }
+    rsb-accordion
+    {
+        .rsb-accordion
+        {
+            // &__title { border: $border-primary; }
+            &__content
+            {
+                &--is-opened
+                {
+                    border-left-color: $primary;
+                    border-right-color: $primary;
+                    border-bottom-color: $primary;
+                }
+            }
+        }
+    }
+    rsb-detail 
+    {
+        .rsb-detail 
+        {
+            border: $border-primary;
+            background: $background;
+        }
+    }
+    rsb-dropdown
+    {
+        .rsb-dropdown
+        {
+            .form-control 
+            {
+                background: $background;
+                color: $color-text;
+            }
+            &__panel-items
+            {
+                background: $background;
+                ul
+                {
+                    li
+                    {
+                        &:hover 
+                        {
+                            background: $selected;
+                        }
+                    }
+                }
+            }
+            .input-group-append i { color: $color-text; }
+        }
+    }
+    rsb-modal 
+    {
+        .rsb-modal 
+        {
+            background: $background;
+            .card 
+            {
+                background: $background;
+            }
+        
+        }
+    }
+    rsb-toggle 
+    {
+        .rsb-toggle
+        {
+            &__btn 
+            {
+                
+                &::after
+                {
+                    background: $background;
+                }
+            }
+        }
+    }
+    rsb-block-list 
+    {
+        .rsb-block-list-item
+        {
+            border: $border-primary;
+            background: $background;
+            &:hover
+            {
+                background: $selected;
+            }
+            &__actions 
+            {
+                &--options-panel
+                {        
+                    border: $border-primary;
+                    background: $background;
+                    li 
+                    {
+                        &:hover
+                        {
+                            background: $selected;
+                        }
+                    }
+                }
+            }
+        }
+        .rsb-block-list-data
+        {
+            &__value
+            {
+                color: $color-text;
+            }
+        }
+    }
+}

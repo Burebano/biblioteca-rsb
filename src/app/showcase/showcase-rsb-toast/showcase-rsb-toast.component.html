@@ -1,0 +1,89 @@
+<rsb-toast></rsb-toast>
+<base-showcase [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Info
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="addInfo()">Invocar mensaje</button>
+          </div>
+          <div class="col-12 title-showcase">
+            Error
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="addError()">Invocar mensaje</button>
+          </div>
+          <div class="col-12 title-showcase">
+            Warning
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="addWarning()">Invocar mensaje</button>
+          </div>
+          <div class="col-12 title-showcase">
+            Success
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="addSuccess()">Invocar mensaje</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;rsb-toast&gt;&lt;/rsb-toast&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;addInfo()&quot;&gt;Info&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;addError()&quot;&gt;Error&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;addWarning()&quot;&gt;Warning&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;addSuccess()&quot;&gt;Success&lt;/button&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbToastService &#125; from 'rsb-library';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-toast',
+  templateUrl: './showcase-rsb-toast.component.html'
+&#125;)
+
+export class ShowcaseRsbToastComponent
+&#123;
+  constructor(private rsbToast:RsbToastService, private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Toast'); &#125;
+  addInfo() &#123; this.rsbToast.addInfoMessage('Info', 'Mensaje info.'); &#125;
+  addError() &#123; this.rsbToast.addErrorMessage('Error', 'Mensaje error.'); &#125;
+  addWarning() &#123; this.rsbToast.addWarningMessage('Warning', 'Mensaje warning.'); &#125;
+  addSuccess() &#123; this.rsbToast.addSuccessMessage('Success', 'Mensaje success.'); &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>timeout</td>
+          <td>Tiempo de duración del toast en milisegundos.</td>
+          <td>number</td>
+          <td>5000</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

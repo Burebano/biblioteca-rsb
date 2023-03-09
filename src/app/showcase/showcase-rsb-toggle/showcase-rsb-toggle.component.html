@@ -1,0 +1,132 @@
+<rsb-toast></rsb-toast>
+<base-showcase>
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <rsb-toggle (toggled)="changeToggle($event)"></rsb-toggle>
+          </div>          
+          <div class="col-12 title-showcase">
+            Label
+          </div>
+          <div class="col-12">
+            <rsb-toggle (toggled)="changeToggle($event)" [label]="'Toggle'"></rsb-toggle>
+          </div>          
+          <div class="col-12 title-showcase">
+            ngModel
+          </div>
+          <div class="col-12">
+            <rsb-toggle (toggled)="changeToggle($event)" [(ngModel)]="valueExNgModel" [label]="'Toggle ngModel'"></rsb-toggle>
+            <div>
+              Value: {{ valueExNgModel }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Estandar
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;rsb-toggle (toggled)=&quot;changeToggle($event)&quot;&gt;&lt;/rsb-toggle&gt;
+&lt;/div&gt;          
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Label
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;rsb-toggle (toggled)=&quot;changeToggle($event)&quot; [label]=&quot;'Toggle'&quot;&gt;&lt;/rsb-toggle&gt;
+&lt;/div&gt;          
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  ngModel
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;rsb-toggle (toggled)=&quot;changeToggle($event)&quot; [(ngModel)]=&quot;valueExNgModel&quot; [label]=&quot;'Toggle ngModel'&quot;&gt;&lt;/rsb-toggle&gt;
+  &lt;div&gt;
+    Value: {{ valueExNgModel }}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+import &#123; RsbToastService &#125; from 'rsb-library';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-toggle',
+  templateUrl: './showcase-rsb-toggle.component.html'
+&#125;)
+
+export class ShowcaseRsbToggleComponent
+&#123;
+  public valueExNgModel:boolean = true;  
+  constructor(private RsbCache:RsbCacheService, private rsbToast:RsbToastService)
+  &#123;
+    this.RsbCache.setElement('title', 'Toggle');
+    this.valueExNgModel = true;
+  &#125;
+  changeToggle($event)
+  &#123;
+    if($event)
+    &#123;
+      this.rsbToast.addSuccessMessage('Activado', 'El toggle se ha activado.');
+    &#125;
+    else 
+    &#123;
+      this.rsbToast.addErrorMessage('Desactivado', 'El toggle se ha desactivado.');
+    &#125;
+  &#125;
+&#125;  
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>label</td>
+          <td>Es el label del toggle.</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>toggled</td>
+          <td>Es el evento que se ejecuta al cambiar el estado del toggle.</td>
+          <td>EventEmitter&lt;boolean&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

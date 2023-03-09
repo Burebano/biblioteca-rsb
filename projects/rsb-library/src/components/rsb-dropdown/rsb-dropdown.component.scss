@@ -1,0 +1,82 @@
+.rsb-dropdown 
+{
+    min-width: 100px;
+    position: relative;
+    .form-control[readonly] {
+        background: #fff;
+        cursor: pointer;
+    }
+    button 
+    {
+        height: 100%;
+        width: 32px;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 0;
+        z-index: 3;
+    }
+    input 
+    {
+        border-radius: 0;
+        &:focus 
+        {
+            outline: none !important;
+            box-shadow: none !important;
+            appearance: none;
+        }
+    }
+    &__panel-items{
+        position: absolute;
+        width: 100%;
+        z-index: 4;
+        background-color: #fff;
+        &--search
+        {
+            input 
+            {
+                outline: none;
+            }
+        }
+        &--no-search
+        {
+            padding: 5px;
+            border: 1px solid #c8c8c8;
+            font-size: 11px;
+            font-style: italic;
+        }
+        &--no-results span 
+        {
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            font-weight: 700;
+            border: 1px solid #c8c8c8;
+            border-top: none;
+        }
+        ul 
+        {
+            margin: 0;
+            padding: 0;
+            max-height: 200px;
+            overflow: auto;
+            border: 1px solid #c8c8c8;
+            border-top: none;
+            li 
+            {
+                list-style: none;
+                cursor: pointer;
+                padding: 5px;
+                &:hover 
+                {
+                    background-color: #aefff48c;
+                }
+            }
+        }
+    }
+    .input-group-append
+    {
+        margin-left: 0;
+    }
+}

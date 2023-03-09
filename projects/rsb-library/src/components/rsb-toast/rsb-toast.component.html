@@ -1,0 +1,13 @@
+<div class="rsb-toast">
+  <div [@overlayAnimation]="{value: 'visible'}" class="rsb-toast__container" [ngClass]="'text-light bg-' + toast.type + ' border-' + toast.type" *ngFor="let toast of toastService.toasts">
+    <div class="rsb-toast__container--title">
+      <span class="rsb-toast__container--title--message">{{toast.title}}</span>
+      <i class="fa fa-times rsb-toast__container--title--close-toast" (click)="closeToast(toast)"></i>
+    </div>
+    <div class="rsb-toast__container--content">
+      <span>
+        {{toast.message}}
+      </span>
+    </div>
+  </div>
+</div>

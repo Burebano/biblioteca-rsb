@@ -28,12 +28,23 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "dist/rsb-library/resources/img", "output": "resources/img/"}
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss", 
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/rsb-library/resources/scss/rsb-styles.scss",
+              "node_modules/rsb-library/resources/themes/theme-default.scss",
+              "node_modules/rsb-library/resources/themes/theme-dark.scss",
+              "node_modules/prismjs/themes/prism.css",
+              "node_modules/rsb-library/resources/scss/font.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-typescript.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -105,7 +116,40 @@
           }
         }
       }
+    },
+    "rsb-library": {
+      "projectType": "library",
+      "root": "projects/rsb-library",
+      "sourceRoot": "projects/rsb-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/rsb-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/rsb-library/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/rsb-library/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rsb-library/src/test.ts",
+            "tsConfig": "projects/rsb-library/tsconfig.spec.json",
+            "karmaConfig": "projects/rsb-library/karma.conf.js"
+          }
+        }
+      }
     }
   },
-  "defaultProject": "biblioteca-rsb"
+  "cli": {
+    "analytics": false
+  }
 }

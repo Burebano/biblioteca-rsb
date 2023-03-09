@@ -1,0 +1,85 @@
+<div class="rsb-menu vh-100">
+  <div class="sidebar">
+    <div class="logo">
+      <img (click)="clickLogo()" src="../assets/img/cherry.svg" />
+    </div>
+    <div class="mt-3">
+      <img (click)="openCloseMenu()" src="../assets/img/book-menu.png" />
+    </div>
+    <span class="cnt-logos">
+      <div class="logo-twitter">
+        <a href="https://twitter.com/" target="_blank">
+          <img src="../assets/img/twitter.png" />
+        </a>
+      </div>
+      <div class="logo-theme" (click)="openTheme()">
+        <img src="../assets/img/theme.png" />
+      </div>
+      <div class="logo-github">
+        <a href="https://www.github.com/" target="_blank">
+          <img src="../assets/img/github.png" />
+        </a>
+      </div>
+      <div class="logo-npm">
+        <a href="https://www.npmjs.com/package/rsb-library/" target="_blank">
+          <img src="../assets/img/npm.png" />
+        </a>
+      </div>
+    </span>
+  </div>
+  <div class="main-bar">
+    <span>
+      {{ rsbCache.getElement('title') }}
+    </span>
+  </div>
+  <div class="main-content" #main>
+    <ng-content select="[content]"></ng-content>
+    <rsb-detail [showOverlay]="false" [showTitle]="false" *ngIf="showMenuItems" class="detail-menu-items" (close)="this.showMenuItems = false">
+      <div detail-content class="row no-gutters menu-items">
+        <div class="col-12">
+          <div detail-content class="row no-gutters">
+            <div class="col-12 mb-2">
+              <div class="input-group">
+                <input type="text" class="form-control" name="search" id="search" (keyup)="filterMenuItems($event)" />
+                <div class="input-group-append">
+                  <button>
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="row no-gutters" *ngIf="menuItemsFiltered.length > 0">
+                <div class="col-12 cnt-sections" *ngFor="let mg of menuItemsFiltered">
+                  <span class="section-text">
+                    {{mg.text}}
+                  </span>
+                  <div class="cnt-items">
+                    <div (click)="goToRoute(mi.route)" *ngFor="let mi of mg.children">
+                        <span>{{mi.text}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row no-gutters" *ngIf="menuItemsFiltered.length == 0">
+                <span>
+                  No hay resultados
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </rsb-detail>
+  </div>
+</div>
+<rsb-modal id="modal-theme" [type]="constants.RsbModalTypeConstants.NO_BUTTONS">
+  <div modal-title>
+    Elige tu theme.
+  </div>
+  <div modal-content>
+    <rsb-dropdown [options]="themes" (selectItem)="changeTheme($event)">
+      <ng-template itemTemplate let-item="item">
+        {{item.label}}
+      </ng-template>
+      </rsb-dropdown>
+  </div>
+</rsb-modal>

@@ -1,0 +1,37 @@
+.rsb-accordion
+{
+    margin: 10px;
+    border-radius: 4px;
+    background-color: #fafafa;
+    border: 1px solid #dadada;
+    width: calc(100% - 20px);
+    &__title 
+    {
+        padding: 10px 25px;
+        cursor: pointer;
+        &--text 
+        {
+            font-size: 24px;
+        }
+        &--icon 
+        {
+            font-size: 22px;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+    }
+    &__content
+    {
+        // &--is-close { display: none; }
+        &--is-opened
+        {
+            padding: 10px 25px;
+            border-top: 1px solid #dadada;
+            overflow: inherit;
+        }
+        &--is-closed
+        {
+            overflow: hidden;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.menu
+{
+    border-bottom: 1px solid #dadada;
+    align-items: center;
+    justify-content: center;
+    gap: 5px 10px;
+    display: grid;
+    padding: 10px;
+    margin-bottom: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr) ) ;
+    a 
+    {
+        display: flex;
+        padding: 10px 15px;
+        background-color: #eaeaea;
+        border: 2px solid #dadada;
+        font-weight: 900;
+        line-height: 1.15;
+        color: #555;
+        transition: background-color .5s ease-in-out;
+        &:hover 
+        {
+            background-color: #dadada;
+        }
+    }
+}

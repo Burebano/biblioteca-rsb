@@ -1,0 +1,18 @@
+<div class="rsb-accordion">
+  <div class="rsb-accordion__title" (click)="openClose()" [ngClass]="{'rsb-accordion__title--is-opened': open, 'rsb-accordion__title--is-closed': !open}">
+    <div class="row">
+      <div class="cold-md-11 col-10 text-left">
+        <span class="rsb-accordion__title--text">
+          {{title}}
+        </span>
+      </div>
+      <div class="cold-md-1 col-2 text-right">
+        <i class="fa fa-angle-down rsb-accordion__title--icon" *ngIf="!open"></i>
+        <i class="fa fa-angle-up rsb-accordion__title--icon" *ngIf="open"></i>
+      </div>
+    </div>
+  </div>
+  <div class="rsb-accordion__content" #contentAccordeon [@slideInOut]="state" [ngClass]="{'rsb-accordion__content--is-opened': open, 'rsb-accordion__content--is-closed': !open}" style="height: 0px;">
+    <ng-content select="[content-accordion]"></ng-content>
+  </div>
+</div>

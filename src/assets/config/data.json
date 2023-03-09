@@ -1,0 +1,109 @@
+{
+    "variable1": "variable1",
+    "variable2": "variable2",
+    "showElement": true,
+    "variable3": {
+        "subVariable1": "soy un valor anidado"
+    },
+    "values": [
+        {
+            "label": "label1",
+            "value": "value1"
+        },
+        {
+            "label": "label2",
+            "value": "value2"
+        },
+        {
+            "label": "label3",
+            "value": "value3"
+        }
+    ],
+    "menuItems": [
+        {
+            "text": "Utilidades",
+            "children": [
+                {
+                    "text": "Config",
+                    "route": "/rsb-config"
+                },
+                {
+                    "text": "Resolution",
+                    "route": "/rsb-resolution"
+                },
+                {
+                    "text": "Translate",
+                    "route": "/rsb-translate"
+                },
+                {
+                    "text": "Spinner",
+                    "route": "/rsb-spinner"
+                },
+                {
+                    "text": "Toast",
+                    "route": "/rsb-toast"
+                }
+            ]
+        },
+        {
+            "text": "Formularios",
+            "children": [
+                {
+                    "text": "Dropdown",
+                    "route": "/rsb-dropdown"
+                },
+                {
+                    "text": "Toggle",
+                    "route": "/rsb-toggle"
+                }
+            ]
+        },
+        {
+            "text": "Contenedores",
+            "children": [
+                {
+                    "text": "Accordion",
+                    "route": "/rsb-accordion"
+                },
+                {
+                    "text": "Detail",
+                    "route": "/rsb-detail"
+                },
+                {
+                    "text": "Block list",
+                    "route": "/rsb-block-list"
+                },
+                {
+                    "text": "Modal",
+                    "route": "/rsb-modal"
+                },
+                {
+                    "text": "Tabs",
+                    "route": "/rsb-tabs"
+                }
+            ]
+        },
+        {
+            "text": "Contenedores",
+            "children": [
+                {
+                    "text": "Join pipe",
+                    "route": "/rsb-join"
+                }
+            ]
+        },
+        {
+            "text": "Directivas",
+            "children": [
+                {
+                    "text": "Click outside",
+                    "route": "/rsb-outside"
+                }, 
+                {
+                    "text": "Load iframe",
+                    "route": "/rsb-load-iframe"
+                }
+            ]
+        }
+    ]
+}

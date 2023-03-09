@@ -1,0 +1,28 @@
+<div class="rsb-modal" *ngIf="show">
+  <div class="rsb-modal__content">
+    <div class="card" rsbClickOutside [avoidFirstTime]="true" [clickOutsideEnabled]="!forceClose" (clickOutside)="onclickOutside($event)">
+      <div class="card-title">
+        <div class="car-title rsb-modal__content--title">
+          <ng-content select="[modal-title]"></ng-content>
+        </div>
+      </div>
+      <div class="card-body">
+        <ng-content select="[modal-content]"></ng-content>
+        <div class="rsb-modal__content--card-buttons" *ngIf="type !== constants.RsbModalTypeConstants.NO_BUTTONS">
+          <button *ngIf="type == constants.RsbModalTypeConstants.CONFIRM || type == constants.RsbModalTypeConstants.INFO" (click)="onConfirm($event)" class="btn btn-primary sb-modal__content--card-buttons--button">
+            <i class="fa fa-check">
+              {{labelConfirm}}
+            </i>
+          </button>
+          &nbsp;
+          <button *ngIf="type == constants.RsbModalTypeConstants.CONFIRM " (click)="onClose($event)" class="btn btn-danger sb-modal__content--card-buttons--button">
+            <i class="fa fa-times">
+              {{labelClose}}
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="rsb-overlay" *ngIf="show"></div>

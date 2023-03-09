@@ -1,0 +1,109 @@
+<rsb-toast></rsb-toast>
+<base-showcase [showInputs]="false" [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            {{ ('label.example.1' | rsbTranslate) + ' ' + ('label.example.2' | rsbTranslate)}}
+          </div>
+          <div class="col-12">
+            {{ 'label.see.console' | rsbTranslate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;col-12&quot;&gt;
+  &#123;&#123; ('label.example.1' | rsbTranslate) + ' ' + ('label.example.2' | rsbTranslate)&#125;&#125;
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &#123;&#123; 'label.see.console' | rsbTranslate &#125;&#125;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component, OnInit &#125; from '@angular/core';
+  import &#123; RsbTranslateService, RsbToastService &#125; from 'rsb-library';
+  import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+  
+  @Component(&#123;
+    selector: 'app-showcase-rsb-translate',
+    templateUrl: './showcase-rsb-translate.component.html'
+  &#125;)
+  
+  export class ShowcaseRsbTranslateComponent implements OnInit
+  &#123;
+    constructor(private rsbTranslate:RsbTranslateService, private RsbToast:RsbToastService, private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Translate'); &#125;
+    ngOnInit()
+    &#123;
+      console.log(this.rsbTranslate.getTranslate('label.example.1'));
+      console.log(this.rsbTranslate.getTranslate('label.example.2'));
+      this.RsbToast.addInfoMessage('Mensaje traducido', 'label.example.1 => ' + this.rsbTranslate.getTranslate('label.example.1'));
+      this.RsbToast.addInfoMessage('Mensaje traducido', 'label.example.2 => ' + this.rsbTranslate.getTranslate('label.example.2'));
+    &#125;
+  &#125;   
+</code></pre>
+        app.module
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; APP_INITIALIZER, NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; AppRoutingModule &#125; from './app-routing.module';
+import &#123; AppComponent &#125; from './app.component';
+import &#123; RsbLibraryModule, RsbTranslateService &#125; from 'rsb-library';
+import &#123; BrowserAnimationsModule &#125; from '@angular/platform-browser/animations';
+import &#123; ShowcaseRsbTranslateComponent &#125; from './showcase/showcase-rsb-translate/showcase-rsb-translate.component';
+export function translateFactory(provider:RsbTranslateService) 
+&#123;
+  return () => provider.getData('assets/i18n/');
+&#125;
+@NgModule(&#123;
+  declarations: [		
+    AppComponent,
+    ShowcaseRsbTranslateComponent
+   ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    RsbLibraryModule
+  ],
+  providers: [
+    RsbTranslateService, 
+    &#123;
+      provide: APP_INITIALIZER,
+      useFactory: translateFactory,
+      deps:[RsbTranslateService],
+      multi: true
+    &#125;
+  ],
+  bootstrap: [AppComponent]
+&#125;)
+export class AppModule &#123; &#125;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="JSON">
+es.json
+<pre><code class="language-typescript" pCode ngNonBindable>&#123;
+  "label.example.1": "Hola",
+  "label.example.2": "mundo",
+  "label.see.console": "Revisa la consola",
+  "label.confirm": "Confirmar",
+  "label.close": "Cerrar"
+&#125;
+</code></pre>
+en.json
+<pre><code class="language-typescript" pCode ngNonBindable>&#123;
+  "label.example.1": "Hello",
+  "label.example.2": "world",
+  "label.see.console": "see console",
+  "label.confirm": "Confirm",
+  "label.close": "Close"
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+</base-showcase>

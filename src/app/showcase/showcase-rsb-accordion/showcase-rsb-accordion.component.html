@@ -1,0 +1,147 @@
+<rsb-toast></rsb-toast>
+<base-showcase>
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Abierto desde el principio
+          </div>
+          <div class="col-12">
+            <rsb-accordion [title]="'Acordeón 1'" [open]="true" (clickOpen)="openAccordionEx1($event)">
+              <div content-accordion>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel enim tempor, venenatis ligula ac, volutpat enim. Morbi commodo ullamcorper rutrum. Morbi id blandit sem, eu rhoncus dolor. Integer turpis dui, luctus non sem sed, laoreet auctor risus. Fusce lacinia turpis a leo rutrum imperdiet. Suspendisse ultricies sollicitudin finibus. Nullam porta sed ligula id rhoncus.
+                <br /><br />
+                Proin et orci at massa rhoncus posuere eget vel velit. Vivamus turpis nisi, egestas sit amet faucibus vitae, rhoncus mattis tellus. Quisque tempor quam et nisl pellentesque pretium. Pellentesque congue ligula nec lectus varius faucibus et vitae neque. Donec at placerat lorem. In vestibulum enim eget nisl lacinia, nec pretium magna facilisis. Mauris iaculis interdum orci nec luctus. Pellentesque in eleifend tellus. 
+              </div>
+            </rsb-accordion>
+          </div>
+          <div class="col-12 title-showcase">
+            Estandar
+          </div>
+          <div class="col-12">
+            <rsb-accordion [title]="'Acordeón 2'" (clickOpen)="openAccordionEx2($event)">
+              <div content-accordion>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel enim tempor, venenatis ligula ac, volutpat enim. Morbi commodo ullamcorper rutrum. Morbi id blandit sem, eu rhoncus dolor. Integer turpis dui, luctus non sem sed, laoreet auctor risus. Fusce lacinia turpis a leo rutrum imperdiet. Suspendisse ultricies sollicitudin finibus. Nullam porta sed ligula id rhoncus.
+                <br /><br />
+                Proin et orci at massa rhoncus posuere eget vel velit. Vivamus turpis nisi, egestas sit amet faucibus vitae, rhoncus mattis tellus. Quisque tempor quam et nisl pellentesque pretium. Pellentesque congue ligula nec lectus varius faucibus et vitae neque. Donec at placerat lorem. In vestibulum enim eget nisl lacinia, nec pretium magna facilisis. Mauris iaculis interdum orci nec luctus. Pellentesque in eleifend tellus. 
+              </div>
+            </rsb-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Abierto desde el principio
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;rsb-accordion [title]=&quot;'Acorde&oacute;n 1'&quot; [open]=&quot;true&quot; (clickOpen)=&quot;openAccordionEx1($event)&quot;&gt;
+    &lt;div content-accordion&gt;
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+    &lt;/div&gt;
+  &lt;/rsb-accordion&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Estandar
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;rsb-accordion [title]=&quot;'Acorde&oacute;n 2'&quot; (clickOpen)=&quot;openAccordionEx2($event)&quot;&gt;
+    &lt;div content-accordion&gt;
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+    &lt;/div&gt;
+  &lt;/rsb-accordion&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+import &#123; RsbToastService &#125; from 'rsb-library';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-accordion',
+  templateUrl: './showcase-rsb-accordion.component.html'
+&#125;)
+
+export class ShowcaseRsbAccordionComponent
+&#123;
+  constructor(private rsbToast:RsbToastService, private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Accordion'); &#125;
+  openAccordionEx1($event)
+  &#123;
+    if($event)
+    &#123;
+      this.rsbToast.addSuccessMessage('Open', 'Abriendo el cordeón 1.');
+    &#125;
+    else 
+    &#123;
+      this.rsbToast.addErrorMessage('Close', 'Cerrando el cordeón 1.');
+    &#125;    
+  &#125;    
+  openAccordionEx2($event)
+  &#123;
+    if($event)
+    &#123;
+      this.rsbToast.addSuccessMessage('Open', 'Abriendo el cordeón 2.');
+    &#125;
+    else 
+    &#123;
+      this.rsbToast.addErrorMessage('Close', 'Cerrando el cordeón 2.');
+    &#125;    
+  &#125;
+&#125;  
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>title</td>
+          <td>Título del acordeón.</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>open</td>
+          <td>Indica si abrir el acordeón al inicio.</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true | false</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>clickOpen</td>
+          <td>Evento al cerrar o abrir el acordeón</td>
+          <td>EventEmitter&lt;boolean&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

@@ -1,0 +1,21 @@
+.rsb-tabs 
+{
+    &__title
+    {
+        text-align: center;
+        font-size: 18px;
+        padding: 10px 15px;
+        display: inline-flex;
+        cursor: pointer;
+        color: #000;
+        border-bottom: 3px solid transparent;
+        &--selected
+        {
+            border-bottom-color: #000;
+        }
+    }
+    &__content
+    {
+        padding: 15px;
+    }
+}

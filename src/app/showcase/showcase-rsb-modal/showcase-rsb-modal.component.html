@@ -1,0 +1,251 @@
+<rsb-toast></rsb-toast>
+<base-showcase>
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Modal de confirmación.
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openModal('confirmar')">
+              Mostrar modal
+            </button>
+            <rsb-modal id="confirmar" [type]="constants.RsbModalTypeConstants.CONFIRM" [labelConfirm]="'label.confirm' | rsbTranslate" [labelClose]="'label.close' | rsbTranslate" (accept)="acceptModal()" (close)="closeModal()">
+              <div modal-title>
+                Confirmar
+              </div>
+              <div modal-content>
+                Contenido
+              </div>
+            </rsb-modal>
+          </div>
+          <div class="col-12 title-showcase">
+            Modal de información.
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openModal('informacion')">
+              Mostrar modal
+            </button>
+            <rsb-modal id="informacion" [type]="constants.RsbModalTypeConstants.INFO" [labelConfirm]="'label.confirm' | rsbTranslate" [labelClose]="'label.close' | rsbTranslate" (accept)="acceptModal()" (close)="closeModal()">
+              <div modal-title>
+                Info
+              </div>
+              <div modal-content>
+                Contenido
+              </div>
+            </rsb-modal>
+          </div>
+          <div class="col-12 title-showcase">
+            Modal sin botones.
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openModal('no_botones')">
+              Mostrar modal
+            </button>
+            <rsb-modal id="no_botones" [type]="constants.RsbModalTypeConstants.NO_BUTTONS" [labelConfirm]="'label.confirm' | rsbTranslate" [labelClose]="'label.close' | rsbTranslate" (accept)="acceptModal()" (close)="closeModal()">
+              <div modal-title>
+                No botones
+              </div>
+              <div modal-content>
+                Contenido
+              </div>
+            </rsb-modal>
+          </div>
+          <div class="col-12 title-showcase">
+            Forzar cierre.
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" (click)="openModal('forzar-cierre')">
+              Mostrar modal
+            </button>
+            <rsb-modal id="forzar-cierre" [type]="constants.RsbModalTypeConstants.INFO" [labelConfirm]="'label.confirm' | rsbTranslate" [labelClose]="'label.close' | rsbTranslate" [forceClose]="true" (accept)="acceptModal()" (close)="closeModal()">
+              <div modal-title>
+                Forzar cierre
+              </div>
+              <div modal-content>
+                Contenido
+              </div>
+            </rsb-modal>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Modal de confirmaci&oacute;n.
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openModal('confirmar')&quot;&gt;
+    Mostrar modal
+  &lt;/button&gt;
+  &lt;rsb-modal id=&quot;confirmar&quot; [type]=&quot;constants.RsbModalTypeConstants.CONFIRM&quot; [labelConfirm]=&quot;'label.confirm' | rsbTranslate&quot; [labelClose]=&quot;'label.close' | rsbTranslate&quot; (accept)=&quot;acceptModal()&quot; (close)=&quot;closeModal()&quot;&gt;
+    &lt;div modal-title&gt;
+      Confirmar
+    &lt;/div&gt;
+    &lt;div modal-content&gt;
+      Contenido
+    &lt;/div&gt;
+  &lt;/rsb-modal&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Modal de informaci&oacute;n.
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openModal('informacion')&quot;&gt;
+    Mostrar modal
+  &lt;/button&gt;
+  &lt;rsb-modal id=&quot;informacion&quot; [type]=&quot;constants.RsbModalTypeConstants.INFO&quot; [labelConfirm]=&quot;'label.confirm' | rsbTranslate&quot; [labelClose]=&quot;'label.close' | rsbTranslate&quot; (accept)=&quot;acceptModal()&quot; (close)=&quot;closeModal()&quot;&gt;
+    &lt;div modal-title&gt;
+      Info
+    &lt;/div&gt;
+    &lt;div modal-content&gt;
+      Contenido
+    &lt;/div&gt;
+  &lt;/rsb-modal&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Modal sin botones.
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openModal('no_botones')&quot;&gt;
+    Mostrar modal
+  &lt;/button&gt;
+  &lt;rsb-modal id=&quot;no_botones&quot; [type]=&quot;constants.RsbModalTypeConstants.NO_BUTTONS&quot; [labelConfirm]=&quot;'label.confirm' | rsbTranslate&quot; [labelClose]=&quot;'label.close' | rsbTranslate&quot; (accept)=&quot;acceptModal()&quot; (close)=&quot;closeModal()&quot;&gt;
+    &lt;div modal-title&gt;
+      No botones
+    &lt;/div&gt;
+    &lt;div modal-content&gt;
+      Contenido
+    &lt;/div&gt;
+  &lt;/rsb-modal&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-12 title-showcase&quot;&gt;
+  Forzar cierre.
+&lt;/div&gt;
+&lt;div class=&quot;col-12&quot;&gt;
+  &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;openModal('forzar-cierre')&quot;&gt;
+    Mostrar modal
+  &lt;/button&gt;
+  &lt;rsb-modal id=&quot;forzar-cierre&quot; [type]=&quot;constants.RsbModalTypeConstants.INFO&quot; [labelConfirm]=&quot;'label.confirm' | rsbTranslate&quot; [labelClose]=&quot;'label.close' | rsbTranslate&quot; [forceClose]=&quot;true&quot; (accept)=&quot;acceptModal()&quot; (close)=&quot;closeModal()&quot;&gt;
+    &lt;div modal-title&gt;
+      Forzar cierre
+    &lt;/div&gt;
+    &lt;div modal-content&gt;
+      Contenido
+    &lt;/div&gt;
+  &lt;/rsb-modal&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbConstantsService, RsbModalService, RsbToastService &#125; from 'rsb-library';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-modal',
+  templateUrl: './showcase-rsb-modal.component.html'
+&#125;)
+
+export class ShowcaseRsbModalComponent
+&#123;  
+  constructor(public constants:RsbConstantsService, private rsbModal:RsbModalService, private rsbToast:RsbToastService, private RsbCache:RsbCacheService) &#123; this.RsbCache.setElement('title', 'Modal'); &#125;
+  openModal(id:string)
+  &#123;
+    console.log(this.rsbModal);
+    this.rsbToast.addInfoMessage('Modal', 'Modal abierta.');
+    this.rsbModal.open(id);
+  &#125;
+  acceptModal() &#123; this.rsbToast.addSuccessMessage('Modal', 'Modal aceptada.'); &#125;
+  closeModal() &#123; this.rsbToast.addErrorMessage('Modal', 'Modal cerrada.'); &#125;
+&#125;
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+  <div inputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+          <th>Valor por defecto</th>
+          <th>Posibles valores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td>Id del modal. *Obligatorio.</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td></td>
+          <td>string</td>
+          <td>
+            constants.RsbModalTypeConstants.INFO
+            <br />
+            info
+          </td>
+          <td>
+            constants.RsbModalTypeConstants.CONFIRM | constants.RsbModalTypeConstants.INFO | constants.RsbModalTypeConstants.NO_BUTTONS
+            <br />
+            open | info | no-buttons
+          </td>
+        </tr>
+        <tr>
+          <td>labelConfirm</td>
+          <td>Label para el botón de confirmar.</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>labelClose</td>
+          <td>Label para el botón de cerrar.</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>forceClose</td>
+          <td>Indica si obliga a cerrrar la modal con el botón.</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true | false</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div outputs class="scrollable">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor devuelto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>close</td>
+          <td>Evento que se ejecuta al cerrar el modal.</td>
+          <td>EventEmitter&lt;MouseEvent&gt;</td>
+        </tr>
+        <tr>
+          <td>accept</td>
+          <td>Evento que se ejecuta al clicar el botón de aceptar.</td>
+          <td>EventEmitter&lt;MouseEvent&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</base-showcase>

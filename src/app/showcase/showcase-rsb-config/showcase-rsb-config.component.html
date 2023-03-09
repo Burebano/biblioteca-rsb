@@ -1,0 +1,128 @@
+<base-showcase [showInputs]="false" [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Recoger un valor simple
+          </div>
+          <div class="col-12">
+            {{ 'variable1' | rsbConfig }}
+          </div>
+          <div class="col-12 title-showcase">
+            Recoger un valor anidado
+          </div>
+          <div class="col-12">
+            {{ 'variable3.subVariable1' | rsbConfig }}
+          </div>
+          <div class="col-12 title-showcase">
+            Mostrar un valor según un estado
+          </div>
+          <div class="col-12">
+            <p *ngIf="'showElement' | rsbConfig">
+              Me puedo mostrar
+            </p>
+          </div>
+          <div class="col-12 title-showcase">
+            Mostrando varios valores
+          </div>
+          <div class="col-12">
+            <p *ngFor="let item of ('values' | rsbConfig)">
+              {{item.label + ' - ' + item.value}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Recoger un valor simple
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    {{ 'variable1' | rsbConfig }}
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Recoger un valor anidado
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    {{ 'variable3.subVariable1' | rsbConfig }}
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Mostrar un valor seg&uacute;n un estado
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;p *ngIf=&quot;'showElement' | rsbConfig&quot;&gt;
+      Me puedo mostrar
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Mostrando varios valores
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    &lt;p *ngFor=&quot;let item of ('values' | rsbConfig)&quot;&gt;
+      {{item.label + ' - ' + item.value}}
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+        Showcase
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+import &#123; RsbConfigService &#125; from 'rsb-library';
+import &#123; RsbCacheService &#125; from '../../services/rsb-cache.service';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-config',
+  templateUrl: './showcase-rsb-config.component.html'
+&#125;)
+
+export class ShowcaseRsbConfigComponent
+&#123;
+  constructor(private rsbConfig:RsbConfigService, private RsbCache:RsbCacheService)
+  &#123;
+    this.RsbCache.setElement('title', 'Config');
+    console.log(this.rsbConfig.getAllData());
+    console.log(this.rsbConfig.getData('variable2'));
+  &#125;
+&#125;  
+</code></pre>
+        App module
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; RsbConfigService, RsbLibraryModule &#125; from 'rsb-library';
+import &#123; BrowserAnimationsModule &#125; from '@angular/platform-browser/animations';
+import &#123; APP_INITIALIZER, NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+
+export function configFactory(provider:RsbConfigService) 
+&#123;
+  return () => provider.getDataFromJSON('assets/config/data.json');
+&#125;
+
+@NgModule(&#123;
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RsbLibraryModule,
+  ],
+  providers: [
+    RsbConfigService, 
+    &#123;
+      provide: APP_INITIALIZER,
+      useFactory: configFactory,
+      deps:[RsbConfigService],
+      multi: true
+    &#125;
+  ],
+  bootstrap: [AppComponent]
+&#125;)
+
+export class AppModule &#123; &#125;  
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+</base-showcase>

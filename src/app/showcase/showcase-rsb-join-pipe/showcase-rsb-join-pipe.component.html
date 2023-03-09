@@ -1,0 +1,75 @@
+<base-showcase [showInputs]="false" [showOutputs]="false">
+  <div examples>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 title-showcase">
+            Array nulo
+          </div>
+          <div class="col-12">
+              {{ valoresNulo! | join }}
+          </div>
+          <div class="col-12 title-showcase">
+            Valores separados por coma
+          </div>
+          <div class="col-12">
+            {{ valores | join }}
+          </div>
+          <div class="col-12 title-showcase">
+            Valores separados por |
+          </div>
+          <div class="col-12">
+            {{ valores | join:' | ' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div code>
+    <rsb-tabs>
+      <rsb-tab-item title="HTML">
+<pre><code class="language-markup" pCode ngNonBindable>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Array nulo
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+      {{ valoresNulo! | join }}
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Valores separados por coma
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    {{ valores | join }}
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 title-showcase&quot;&gt;
+    Valores separados por |
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12&quot;&gt;
+    {{ valores | join:' | ' }}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </rsb-tab-item>
+      <rsb-tab-item title="TS">
+<pre><code class="language-typescript" pCode ngNonBindable>import &#123; Component &#125; from '@angular/core';
+
+@Component(&#123;
+  selector: 'app-showcase-rsb-join-pipe',
+  templateUrl: './showcase-rsb-join-pipe.component.html'
+&#125;)
+
+export class ShowcaseRsbJoinPipeComponent
+&#123;
+  public  valoresNulo = null;
+  public  valores:string[];
+  constructor(private RsbCache:RsbCacheService)
+  &#123;
+    this.RsbCache.setElement('title', 'Join pipe');
+    this.valores = ["1", "2", "tres", "4"];
+  &#125;
+&#125;  
+</code></pre>
+      </rsb-tab-item>
+    </rsb-tabs>
+  </div>
+</base-showcase>
