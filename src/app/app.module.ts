@@ -1,10 +1,8 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RsbExampleModule } from 'rsb-example';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShowcaseRsbExampleComponent } from './showcase/showcase-rsb-example/showcase-rsb-example.component';
 import { RsbLibraryModule } from '../../projects/rsb-library/src/rsb-library.module';
 import { ShowcaseRsbJoinPipeComponent } from './showcase/showcase-rsb-join-pipe/showcase-rsb-join-pipe.component';
 import { ShowcaseRsbSpinnerComponent } from './showcase/showcase-rsb-spinner/showcase-rsb-spinner.component';
@@ -43,7 +41,6 @@ export function translateFactory(provider:RsbTranslateService)
 @NgModule({
   declarations: [		
     AppComponent,
-    ShowcaseRsbExampleComponent, 
     ShowcaseRsbJoinPipeComponent, 
     ShowcaseRsbSpinnerComponent,
     ShowcaseRsbToastComponent,
@@ -67,7 +64,6 @@ export function translateFactory(provider:RsbTranslateService)
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RsbExampleModule,
     RsbLibraryModule,
     FormsModule,
     CodeHighlighterModule

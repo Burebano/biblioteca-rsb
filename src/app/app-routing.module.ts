@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShowcaseRsbExampleComponent } from './showcase/showcase-rsb-example/showcase-rsb-example.component';
 import { ShowcaseRsbJoinPipeComponent } from './showcase/showcase-rsb-join-pipe/showcase-rsb-join-pipe.component';
 import { ShowcaseRsbSpinnerComponent } from './showcase/showcase-rsb-spinner/showcase-rsb-spinner.component';
 import { ShowcaseRsbToastComponent } from './showcase/showcase-rsb-toast/showcase-rsb-toast.component';
@@ -19,7 +18,6 @@ import { ShowcaseRsbModalComponent } from './showcase/showcase-rsb-modal/showcas
 import { GetStartedComponent } from './get-started/get-started.component';
 
 const routes: Routes = [
-  {path: 'rsb-example', component: ShowcaseRsbExampleComponent},
   {path: 'rsb-join', component: ShowcaseRsbJoinPipeComponent},
   {path: 'rsb-spinner', component: ShowcaseRsbSpinnerComponent},
   {path: 'rsb-toast', component: ShowcaseRsbToastComponent},

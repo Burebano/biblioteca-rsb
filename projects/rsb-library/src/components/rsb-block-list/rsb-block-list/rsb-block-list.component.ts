@@ -13,28 +13,71 @@ import { RsbSelectedItem } from '../../../common/rsb-selected-item';
 })
 export class RsbBlockListComponent<T> implements OnInit, OnChanges {
 
+  /**
+   * Items a mostrar.
+   */
   @Input() blockItems:RsbBlockItem<T>[];
+  /**
+   * Texto que se mostrará cuando no haya items. 
+   */
   @Input() labelNoResults:string = 'No results.';
-
+  /**
+   * Indica si queremos mostrar el header del block. 
+   */
   @Input() showHeader:boolean = true;
+  /**
+   * Indica si queremos mostrar la información adicional. 
+   */
   @Input() showInfoAdditional:boolean = true;
+  /**
+   * Indica si queremos mostrar las acciones.
+   */
   @Input() showActions:boolean = true;
+  /**
+   * Indica si queremos mostrar el borde.
+   */
   @Input() showBorder:boolean = true;
-
+  /**
+   * Indica el número de elementos por página.
+   */
   @Input() pagination:number = this.constants.RsbBlockListConstants.PAGINATION_DEFAULT;
+  /**
+   * Texto que se muestra en el previo de la paginación. 
+   */
   @Input() previousLabel:string = 'Previa';
+  /**
+   * Texto que se muestra en el siguiente de la paginación. 
+   */
   @Input() nextLabel:string = 'Siguiente';
-
+  /**
+   * Evento al clicar sobre el bloque. 
+   */
   @Output() itemSelected:EventEmitter<RsbSelectedItem<T>>;
+  /**
+   * Evento al seleccionar una acción. 
+   */
   @Output() actionSelected:EventEmitter<RsbAction<T>>;
-
+  /**
+   * Template de la cabecera.
+   */
   @ContentChild('templateHeader', {static: false}) templateHeader:TemplateRef<any>;
+  /**
+   * Template de la información adicional.
+   */
   @ContentChild('templateInfoAdditional', {static: false}) templateInfoAdditional:TemplateRef<any>;
+  /**
+   * Template de los datos.
+   */
   @ContentChild('templateData', {static: false}) templateData:TemplateRef<any>;
 
-  public page:number;
-
+  /**
+   * Referencia de los bloques hijos
+   */
   @ViewChildren(RsbBlockListItemComponent) blocks:QueryList<RsbBlockListItemComponent<T>>;
+  /**
+   * Indica la página actual.
+   */
+  public page:number;
 
   constructor(private constants:RsbConstantsService)
   {
@@ -65,11 +108,19 @@ export class RsbBlockListComponent<T> implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Emite la acción seleccionada.
+   * @param item Item seleccionado. 
+   */
   sendAction($event:RsbAction<T>)
   {
     this.actionSelected.emit($event);
   }
 
+  /**
+   * Emite el item seleccionado
+   * @param $event Acción seleccionada. 
+   */
   selectItem(blockItem:RsbBlockItem<T>, index:number)
   {
     let selectedItem = new RsbSelectedItem<T>();
@@ -78,6 +129,10 @@ export class RsbBlockListComponent<T> implements OnInit, OnChanges {
     this.itemSelected.emit(selectedItem);
   }
 
+  /**
+   * Cierra toas las opciones de los demás bloques. 
+   * @param id Id que no cerrará sus opciones. 
+   */
   closeAllOptionsExcept(id:string)
   {
     this.blocks.forEach(block => {

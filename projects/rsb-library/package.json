@@ -1,8 +1,8 @@
 {
-  "name": "rsb-library",
-  "version": "13.16.4",
+  "name": "@Burebano/rsb-library",
+  "version": "13.16.7",
   "author": {
-    "email": "basural@outlook.es"
+    "email": "burebano@gmail.com"
   },
   "description": "Biblioteca de componentes de Angular.",
   "peerDependencies": {
@@ -15,5 +15,12 @@
     "lodash-es": "^4.17.0",
     "ngx-pagination": "^6.0.3",
     "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Burebano/biblioteca-rsb.git"    
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

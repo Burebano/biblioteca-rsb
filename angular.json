@@ -29,7 +29,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/*", "input": "dist/rsb-library/resources/img", "output": "resources/img/"}
+              { "glob": "**/*", "input": "node_modules/rsb-library/resources/img", "output": "resources/img/"}
             ],
             "styles": [
               "src/styles.scss", 
